@@ -1,9 +1,10 @@
 #pragma once
 
-#include <glog/logging.h>
-
-#ifndef WRP_GLOG_ENABLED
-  #define WRP_GLOG_ENABLED
+#ifndef NDEBUG
+  #include <glog/logging.h>
+  #ifndef WRP_GLOG_ENABLED
+    #define WRP_GLOG_ENABLED
+  #endif
 #endif
 
 #ifdef WRP_GLOG_ENABLED
@@ -19,8 +20,9 @@ namespace WonderRabbitProject { namespace glog {
   , STDERR
   };
   
-  void initialize(const OUT out, const char* name)
+  inline void initialize(const OUT out, const char* name)
   {
+#ifdef WRP_GLOG_ENABLED
     google::InitGoogleLogging(name);
     switch(out)
     {
@@ -29,6 +31,7 @@ namespace WonderRabbitProject { namespace glog {
     default:;
     }
     L(INFO, "glog initialized");
+#endif
   }
 
 } }
