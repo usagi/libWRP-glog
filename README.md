@@ -26,7 +26,7 @@ The sample is in the './sample' directory.
 
 ### Optional
 
-* [Ninja](http://martine.github.com/ninja/)
+* [Ninja](https://ninja-build.org/)
 
 ## Document
 
